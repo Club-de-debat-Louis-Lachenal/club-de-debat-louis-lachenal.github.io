@@ -1,29 +1,56 @@
 ---
+import { gsap } from "gsap";
 ---
 
 <nav>
-    <a href="/">Accueil</a>
-    <a href="/about">lorem1</a>
-    <a href="/about">lorem2</a>
-    <a href="/about">lorem3</a>
-    <a href="/about">lorem4</a>
+  <a href="/" class="active">Accueil</a>
+  <a href="/">lorem1</a>
+  <a href="/">lorem2</a>
+  <a href="/">lorem3</a>
+  <a href="/">lorem4</a>
+  <div class="line"></div>
 </nav>
 
+<script>
+  function active() {
+    return nav.querySelector(".active");
+  }
+  let nav = document.querySelector("nav");
+  let line = nav.querySelector(".active");
+
+  import { gsap } from "gsap";
+
+  document.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+    // TODO Make on scroll animations
+  });
+</script>
+
 <style lang="scss">
-nav {
+  nav {
     @apply flex flex-row items-center justify-around;
     height: var(--nav-size);
     position: fixed;
-    top:0;left:0;width:100%;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    a {
-        padding: 20px;
-
+    .line {
+      height: 2px;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      background: #ff1847;
     }
-}
+    a {
+      padding: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+  }
 </style>
