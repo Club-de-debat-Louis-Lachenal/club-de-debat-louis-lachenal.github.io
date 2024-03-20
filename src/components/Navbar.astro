@@ -1,0 +1,29 @@
+---
+---
+
+<nav>
+    <a href="/">Accueil</a>
+    <a href="/about">lorem1</a>
+    <a href="/about">lorem2</a>
+    <a href="/about">lorem3</a>
+    <a href="/about">lorem4</a>
+</nav>
+
+<style lang="scss">
+nav {
+    @apply flex flex-row items-center justify-around;
+    height: var(--nav-size);
+    position: fixed;
+    top:0;left:0;width:100%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    a {
+        padding: 20px;
+
+    }
+}
+</style>
