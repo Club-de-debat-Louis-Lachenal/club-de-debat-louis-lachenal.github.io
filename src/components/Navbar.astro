@@ -3,11 +3,16 @@
 ---
 
 <nav>
-  <a id="_lorem1">lorem1</a>
+  <a href="https://www.lycee-louis-lachenal.fr" target="_blank" style=""
+    ><img src="lachenal.png" alt="Lachenal" /></a
+  >
   <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
-  <a id="_lorem2">lorem2</a>
-  <a id="_lorem3">lorem3</a>
-  <a id="_lorem4">lorem4</a>
+  <div class="lnks">
+    <a id="_lorem1">Présentation</a>
+    <a id="_lorem2">Inscription</a>
+    <a id="_lorem3">Les chiffres</a>
+    <a id="_lorem4">Tips</a>
+  </div>
   <div class="line"></div>
 </nav>
 
@@ -22,7 +27,12 @@
       }
     }
     if (typeof new_link === "undefined") {
-      return nav.querySelector("a")!; // Get first link
+      console.error("Can't find a link for current screen position !");
+      for (let a of nav.querySelectorAll("a")) {
+        if (a.id.startsWith("_")) {
+          return a;
+        } // Get first **usable** link (skipping logo etc)
+      }
     }
     return new_link!;
   }
@@ -67,8 +77,10 @@
   window.addEventListener("resize", handleScroll);
 
   for (let section of document.querySelectorAll("section")) {
-    let lnk = nav.querySelector(`a#_${section.id}`)!;
-    lnk.setAttribute("href", `#${section.id}`);
+    let lnk = nav.querySelector(`a#_${section.id}`);
+    if (lnk) {
+      lnk.setAttribute("href", `#${section.id}`);
+    }
   }
 
   // Call once to setup vars and underline current header (because the scroll is preserved on reload)
@@ -84,7 +96,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(var(--accent), 0.8);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -100,6 +112,7 @@
     }
     a {
       padding: 20px;
+      font-size: 24px;
       transition: all 0.4s ease;
       position: relative;
     }
