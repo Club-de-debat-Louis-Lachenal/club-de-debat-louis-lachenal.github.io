@@ -3,10 +3,10 @@
 ---
 
 <nav>
-  <a href="/" id="lorem1">lorem1</a>
-  <a href="/" id="lorem2">lorem2</a>
-  <a href="/" id="lorem3">lorem3</a>
-  <a href="/" id="lorem4">lorem4</a>
+  <a id="_lorem1">lorem1</a> <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
+  <a id="_lorem2">lorem2</a>
+  <a id="_lorem3">lorem3</a>
+  <a id="_lorem4">lorem4</a>
   <div class="line"></div>
 </nav>
 
@@ -15,8 +15,8 @@
     let new_link;
     for (let section of document.querySelectorAll("section")) {
       let rect = section.getBoundingClientRect();
-      if (rect.top < 50) {
-        new_link = nav.querySelector(`a#${section.id}`);
+      if (rect.top < 200) {
+        new_link = nav.querySelector(`a#_${section.id}`)!;
         // No breaking because we want the last element
       }
     }
@@ -54,6 +54,12 @@
   let nav = document.querySelector("nav")!;
   let line = nav.querySelector(".line")!;
   document.addEventListener("scroll", handleScroll);
+
+  for (let section of document.querySelectorAll("section")) {
+    let lnk = nav.querySelector(`a#_${section.id}`)!;
+    lnk.setAttribute("href", `#${section.id}`);
+  }
+
   // Call once to setup vars and underline current header (because the scroll is preserved on reload)
   let previous = get_current_section_link();
   line.setAttribute(
