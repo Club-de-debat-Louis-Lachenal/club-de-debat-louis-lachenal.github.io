@@ -11,37 +11,55 @@
 </nav>
 
 <script>
-  function active() {
-    return nav.querySelector(".active");
-  }
-  function handleScroll() {
+  function get_current_section_link(): Element {
+    let new_link;
     for (let section of document.querySelectorAll("section")) {
       let rect = section.getBoundingClientRect();
       if (rect.top < 50) {
-        link = nav.querySelector(`a#${section.id}`);
+        new_link = nav.querySelector(`a#${section.id}`);
+        // No breaking because we want the last element
       }
     }
-    if (typeof link === "undefined") {
-        link = nav.querySelector("a");
+    if (typeof new_link === "undefined") {
+      return nav.querySelector("a")!; // Get first link
     }
-      line.setAttribute(
-        "style",
-        `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
-      );
-    link = undefined;
+    return new_link!;
   }
-  let nav = document.querySelector("nav");
-  let line = nav.querySelector(".line");
-  let link = undefined;
-
-  import { gsap } from "gsap";
-
-  document.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger);
-    // TODO Make on scroll animations
-  });
+  function handleScroll() {
+    let link = get_current_section_link();
+    if (link != previous) {
+      let dx =
+        link.getBoundingClientRect().left -
+        previous.getBoundingClientRect().left;
+      if (dx > 0) {
+        line.setAttribute(
+          "style",
+          `left: ${previous.getBoundingClientRect().left}px; width: ${dx + link.getBoundingClientRect().width}px;`
+        );
+      } else {
+        line.setAttribute(
+          "style",
+          `left: ${link.getBoundingClientRect().left}px; width: ${Math.abs(dx) + link.getBoundingClientRect().width}px;`
+        );
+      }
+      setTimeout(() => {
+        line.setAttribute(
+          "style",
+          `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
+        );
+      }, 500);
+      previous = link;
+    }
+  }
+  let nav = document.querySelector("nav")!;
+  let line = nav.querySelector(".line")!;
   document.addEventListener("scroll", handleScroll);
   // Call once to setup vars and underline current header (because the scroll is preserved on reload)
+  let previous = get_current_section_link();
+  line.setAttribute(
+    "style",
+    `left: ${previous.getBoundingClientRect().left}px; width: ${previous.getBoundingClientRect().width}px;`
+  );
   handleScroll();
 </script>
 
