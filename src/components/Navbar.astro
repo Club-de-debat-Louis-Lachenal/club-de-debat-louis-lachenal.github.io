@@ -3,7 +3,8 @@
 ---
 
 <nav>
-  <a id="_lorem1">lorem1</a> <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
+  <a id="_lorem1">lorem1</a>
+  <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
   <a id="_lorem2">lorem2</a>
   <a id="_lorem3">lorem3</a>
   <a id="_lorem4">lorem4</a>
@@ -42,18 +43,28 @@
           `left: ${link.getBoundingClientRect().left}px; width: ${Math.abs(dx) + link.getBoundingClientRect().width}px;`
         );
       }
+      animating = true;
       setTimeout(() => {
         line.setAttribute(
           "style",
           `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
         );
+        animating = false;
       }, 500);
       previous = link;
+    }
+    if (!animating) {
+      line.setAttribute(
+        "style",
+        `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
+      );
     }
   }
   let nav = document.querySelector("nav")!;
   let line = nav.querySelector(".line")!;
+  let animating = false;
   document.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
 
   for (let section of document.querySelectorAll("section")) {
     let lnk = nav.querySelector(`a#_${section.id}`)!;
@@ -62,10 +73,6 @@
 
   // Call once to setup vars and underline current header (because the scroll is preserved on reload)
   let previous = get_current_section_link();
-  line.setAttribute(
-    "style",
-    `left: ${previous.getBoundingClientRect().left}px; width: ${previous.getBoundingClientRect().width}px;`
-  );
   handleScroll();
 </script>
 
