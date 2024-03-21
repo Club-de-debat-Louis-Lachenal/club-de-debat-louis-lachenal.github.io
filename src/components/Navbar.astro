@@ -1,28 +1,91 @@
 ---
+
 ---
 
 <nav>
-  <a href="/" class="active">Accueil</a>
-  <a href="/">lorem1</a>
-  <a href="/">lorem2</a>
-  <a href="/">lorem3</a>
-  <a href="/">lorem4</a>
+  <a href="https://www.lycee-louis-lachenal.fr" target="_blank" style=""
+    ><img src="lachenal.png" alt="Lachenal" /></a
+  >
+  <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
+  <div class="lnks">
+    <a id="_lorem1">Présentation</a>
+    <a id="_lorem2">Inscription</a>
+    <a id="_lorem3">Les chiffres</a>
+    <a id="_lorem4">Tips</a>
+  </div>
   <div class="line"></div>
 </nav>
 
 <script>
-  function active() {
-    return nav.querySelector(".active");
+  function get_current_section_link(): Element {
+    let new_link;
+    for (let section of document.querySelectorAll("section")) {
+      let rect = section.getBoundingClientRect();
+      if (rect.top < 200) {
+        new_link = nav.querySelector(`a#_${section.id}`)!;
+        // No breaking because we want the last element
+      }
+    }
+    if (typeof new_link === "undefined") {
+      console.error("Can't find a link for current screen position !");
+      for (let a of nav.querySelectorAll("a")) {
+        if (a.id.startsWith("_")) {
+          return a;
+        } // Get first **usable** link (skipping logo etc)
+      }
+    }
+    return new_link!;
   }
-  let nav = document.querySelector("nav");
-  let line = nav.querySelector(".active");
+  function handleScroll() {
+    let link = get_current_section_link();
+    if (link != previous) {
+      let dx =
+        link.getBoundingClientRect().left -
+        previous.getBoundingClientRect().left;
+      if (dx > 0) {
+        line.setAttribute(
+          "style",
+          `left: ${previous.getBoundingClientRect().left}px; width: ${dx + link.getBoundingClientRect().width}px;`
+        );
+      } else {
+        line.setAttribute(
+          "style",
+          `left: ${link.getBoundingClientRect().left}px; width: ${Math.abs(dx) + link.getBoundingClientRect().width}px;`
+        );
+      }
+      animating = true;
+      setTimeout(() => {
+        line.setAttribute(
+          "style",
+          `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
+        );
+        animating = false;
+      }, 500);
+      previous = link;
+    }
+    if (!animating) {
+      line.setAttribute(
+        "style",
+        `left: ${link.getBoundingClientRect().left}px; width: ${link.getBoundingClientRect().width}px;`
+      );
+    }
+  }
+  let nav = document.querySelector("nav")!;
+  let line = nav.querySelector(".line")!;
+  let animating = false;
+  document.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
 
-  import { gsap } from "gsap";
+  for (let section of document.querySelectorAll("section")) {
+    let lnk = nav.querySelector(`a#_${section.id}`);
+    if (lnk) {
+      lnk.setAttribute("href", `#${section.id}`);
+    }
+  }
 
-  document.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger);
-    // TODO Make on scroll animations
-  });
+  // Call once to setup vars and underline current header (because the scroll is preserved on reload)
+  let previous = get_current_section_link();
+  handleScroll();
 </script>
 
 <style lang="scss">
@@ -33,21 +96,23 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(var(--accent), 0.8);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     .line {
-      height: 2px;
       position: absolute;
+      height: 2px;
       bottom: 10px;
       left: 0;
       background: #ff1847;
+      transition: 0.5s;
     }
     a {
       padding: 20px;
+      font-size: 24px;
       transition: all 0.4s ease;
       position: relative;
     }
