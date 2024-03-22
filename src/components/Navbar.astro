@@ -8,7 +8,7 @@
   >
   <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
   <div class="lnks">
-    <a id="_lorem1">Présentation</a>
+    <a id="_hero">Présentation</a>
     <a id="_lorem2">Inscription</a>
     <a id="_lorem3">Les chiffres</a>
     <a id="_lorem4">Tips</a>
@@ -93,6 +93,7 @@
     @apply flex flex-row items-center justify-around;
     height: var(--nav-size);
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
