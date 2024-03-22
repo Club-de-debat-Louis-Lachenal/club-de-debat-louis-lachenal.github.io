@@ -1,35 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
+import PresentationSection from "../components/PresentationSection.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <HeroSection />
-  <section id="lorem2" style="padding: 40px;">
-    <p>
-      Chaque semaine, nous nous retrouvons avec enthousiasme pour défendre nos
-      points de vue, encourager le dialogue et approfondir notre compréhension
-      mutuelle. Notre club est bien plus qu'un simple lieu de discussion ; c'est
-      un espace où les voix de chacun sont écoutées et valorisées, où
-      l'apprentissage se fait dans la diversité et la camaraderie.
-    </p>
-  </section>
-  <section id="lorem3">
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-      praesentium molestias earum necessitatibus ipsa a nesciunt in minus, aut
-      neque quisquam molestiae obcaecati facilis. Nam sit doloremque dolores
-      dolorum corrupti.
-    </p>
-  </section>
-  <section id="lorem4">
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-      praesentium molestias earum necessitatibus ipsa a nesciunt in minus, aut
-      neque quisquam molestiae obcaecati facilis. Nam sit doloremque dolores
-      dolorum corrupti.
-    </p>
-  </section>
+  <PresentationSection
+    id="present"
+    title="Présentation"
+    desc="  Chaque semaine, nous nous retrouvons avec enthousiasme pour défendre nos  points de vue, encourager le dialogue et approfondir notre compréhension  mutuelle. Notre club est bien plus qu'un simple lieu de discussion ; c'est  un espace où les voix de chacun sont écoutées et valorisées, où  l'apprentissage se fait dans la diversité et la camaraderie."
+  />
+  <PresentationSection
+    id="register"
+    title="Pour vous inscrire"
+    desc="Rejoignez notre club de débat lycéen et transformez vos idées en arguments percutants, vos doutes en convictions, et vos discussions en véritables aventures intellectuelles ! 🎉 Incriver vous ici, ou contacté nous sur insta : club_debat_lll"
+  />
+  <PresentationSection id="nums" title="Les chiffres" desc="Nb inscrits: 8" />
+  <PresentationSection
+    id="tips"
+    title="Quelques tips"
+    desc="Manger bien avant de venir, utiliser son cerveau ça creuse 🙃"
+  />
 </Layout>
 
 <style lang="scss">
