@@ -34,7 +34,7 @@
     .left {
       @apply flex flex-col  justify-center;
       width: 50%;
-      background: rgba(255, 255, 255, 0.4);
+      //   background: rgba(255, 255, 255, 0.4);
       padding: 40px;
       h1 {
         font-family: "Inter Tight", "Inter Tight Placeholder", sans-serif;
@@ -181,6 +181,29 @@
         position: absolute;
         background: white;
         transform: rotate(15deg) translateY(-10%) translateX(-70%);
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    section {
+      height: 120vh;
+      background: rgba(255,255,255, .75);
+      .left {
+        width: 100%;
+        h1 {
+          font-size: 100px;
+        }
+        p {
+            font-size: 24px;
+            width: 100%;
+        }
+      }
+      .bg_image {
+        width: 100%;
+        left: 0;
+        .sep {
+          display: none;
+        }
       }
     }
   }

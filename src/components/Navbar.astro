@@ -3,7 +3,7 @@
 ---
 
 <nav>
-  <a href="https://www.lycee-louis-lachenal.fr" target="_blank" style=""
+  <a href="https://www.lycee-louis-lachenal.fr" target="_blank" class="logo"
     ><img src="lachenal.png" alt="Lachenal" /></a
   >
   <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
@@ -150,5 +150,14 @@
     //     position: absolute;
     //   }
     // }
+  }
+  
+  @media screen and (max-width: 768px) {
+    nav {
+        a.logo {
+            display: none;
+        }
+        
+    }
   }
 </style>
