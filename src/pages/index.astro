@@ -1,23 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <h1>Bienvenue sur le site officiel du Club débat de Lachenal !</h1>
-  <section id="lorem1">
+  <HeroSection />
+  <section id="lorem2" style="padding: 40px;">
     <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-      praesentium molestias earum necessitatibus ipsa a nesciunt in minus, aut
-      neque quisquam molestiae obcaecati facilis. Nam sit doloremque dolores
-      dolorum corrupti.
-    </p>
-  </section>
-  <section id="lorem2">
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
-      praesentium molestias earum necessitatibus ipsa a nesciunt in minus, aut
-      neque quisquam molestiae obcaecati facilis. Nam sit doloremque dolores
-      dolorum corrupti.
+      Chaque semaine, nous nous retrouvons avec enthousiasme pour défendre nos
+      points de vue, encourager le dialogue et approfondir notre compréhension
+      mutuelle. Notre club est bien plus qu'un simple lieu de discussion ; c'est
+      un espace où les voix de chacun sont écoutées et valorisées, où
+      l'apprentissage se fait dans la diversité et la camaraderie.
     </p>
   </section>
   <section id="lorem3">
@@ -39,9 +33,6 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style lang="scss">
-  h1 {
-    font-size: 100px;
-  }
   section {
     min-height: 100vh;
   }
