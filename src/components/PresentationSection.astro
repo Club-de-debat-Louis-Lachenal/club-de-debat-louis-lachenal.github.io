@@ -1,0 +1,91 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  desc: string;
+}
+let { id, title, desc } = Astro.props;
+---
+
+<section id={id}>
+  <h1 class=`t_${id}`>{title}</h1>
+  <p>{desc}</p>
+</section>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+></script>
+<script defer>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger);
+    for (let section of document.querySelectorAll("section")) {
+      let id = section.id;
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: `h1.t_${id}`,
+          start: "bottom bottom",
+          end: "70% 70%",
+          scrub: true,
+        },
+      });
+      tl.to(`h1.t_${id}`, {
+        "--width": "110%",
+        "--inverted-width": "0%",
+        opacity: 1,
+      });
+    }
+  });
+</script>
+
+<style lang="scss">
+  section {
+    @apply flex flex-col justify-center items-center;
+    padding: 10vw;
+    min-height: 80vh;
+    h1 {
+      font-size: 50px;
+      margin: 50px;
+      opacity: 0;
+      position: relative;
+      --width: 0%;
+      --inverted-width: 100%;
+      transition: 0.5s;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        width: var(--width);
+        transform: translateX(-50%);
+        left: 50%;
+        height: 5px;
+        transition: 0.5s;
+        border-radius: 2px;
+        background: linear-gradient(
+          111.3deg,
+          var(--primary) 9.6%,
+          var(--secondary) 93.6%
+        );
+      }
+      //   &::after {
+      //     content: "";
+      //     position: absolute;
+      //     top: 0%;
+      //     width: var(--inverted-width);
+      //     transform: translateX(-50%);
+      //     left: 50%;
+      //     height: 100%;
+      //     background: white;
+      //     transition: 0.5s;
+      //   }
+    }
+    p {
+      width: 50%;
+      font-size: clamp(15px, 2vw, 20px);
+    }
+  }
+</style>
