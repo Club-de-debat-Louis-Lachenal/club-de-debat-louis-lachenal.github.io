@@ -187,15 +187,15 @@
   @media screen and (max-width: 768px) {
     section {
       height: 120vh;
-      background: rgba(255,255,255, .75);
+      background: rgba(255, 255, 255, 0.75);
       .left {
         width: 100%;
         h1 {
           font-size: 100px;
         }
         p {
-            font-size: 24px;
-            width: 100%;
+          font-size: 24px;
+          width: 100%;
         }
       }
       .bg_image {
@@ -205,6 +205,15 @@
           display: none;
         }
       }
+    }
+  }
+  // Else the know more button is next to the first header, which looks broken !
+  @media screen and (max-width: 1400px) {
+    section {
+      // img {
+      //   transform: scale(1.5) !important;
+      // }
+      margin-bottom: 10vh;
     }
   }
 </style>
