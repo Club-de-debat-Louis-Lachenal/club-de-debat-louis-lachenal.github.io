@@ -88,4 +88,13 @@ let { id, title, desc } = Astro.props;
       font-size: clamp(15px, 2vw, 20px);
     }
   }
+  
+  @media screen and (max-width: 768px) {
+    section {
+        min-height: 50vh;
+        p {
+            width: 90%;
+        }
+    }
+  }
 </style>
