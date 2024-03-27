@@ -9,7 +9,7 @@ let { id, title, desc } = Astro.props;
 
 <section id={id}>
   <h1 class=`t_${id}`>{title}</h1>
-  <p>{desc}</p>
+  <p set:html={desc}></p>
 </section>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
 ></script>
