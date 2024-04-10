@@ -54,7 +54,7 @@ jobs:
       - name: Move images
         run: |
           cd dist
-          mv debating.jpg _astro/debating.jgp
+          mv debating.jpg _astro/debating.jpg
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
