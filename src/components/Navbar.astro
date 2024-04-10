@@ -3,9 +3,7 @@
 ---
 
 <nav>
-  <a href="https://www.lycee-louis-lachenal.fr" target="_blank" class="logo"
-    ><img src="lachenal.png" alt="Lachenal" /></a
-  >
+  <img src="logo.svg" class="logo" alt="Lachenal" />
   <!-- Kindof like a link... Must be _<id of section... See pages/index.astro> -->
   <div class="lnks">
     <a id="_hero">Accueil</a>
@@ -150,6 +148,9 @@
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       //   animation: navbar_pop 0.5s linear forwards;
     }
+    .logo {
+      height: 95%;
+    }
     // @keyframes navbar_pop {
     //   0% {
     //     transform: translateY(-100%);
@@ -176,7 +177,7 @@
 
   @media screen and (max-width: 1024px) {
     nav {
-      a.logo {
+      .logo {
         display: none;
       }
     }
