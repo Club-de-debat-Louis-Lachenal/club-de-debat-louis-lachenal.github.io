@@ -51,6 +51,10 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Move images
+        run: |
+          cd dist
+          mv debating.jpg _astro/debating.jpg
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
