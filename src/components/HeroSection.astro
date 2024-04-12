@@ -1,219 +1,230 @@
----
-
----
-
 <section id="hero">
-  <div class="bg_image">
-    <div class="sep"></div>
-  </div>
-  <div class="left">
-    <h1>Rejoignez le <strong>club débat</strong>.</h1>
-    <p>
-      Bienvenue sur le site officiel du club de débat du lycée Louis Lachenal !
-      Au sein de notre club de débat lycéen, nous explorons un vaste éventail de
-      sujets, des questions sociétales aux enjeux mondiaux. Rassemblés dans une
-      atmosphère de respect et d'ouverture d'esprit, nous échangeons des idées,
-      affinons nos argumentaires et développons nos compétences en prise de
-      parole.
-    </p>
-    <a class="know_more" href="#present" area-label="En savoir plus ->">
-      <span area-hidden="true">
-        <span>En<span>En</span></span>
-        <span>savoir<span>savoir</span></span>
-        <span>plus<span>plus</span></span>
-        <span>⠀⠀<span>➡️</span> </span>
-      </span>
-    </a>
-  </div>
+    <div class="bg_image">
+        <div class="sep"></div>
+    </div>
+    <div class="left">
+        <h1>Rejoignez le <strong>club débat</strong>.</h1>
+        <p>
+            Bienvenue sur le site officiel du club de débat du lycée Louis Lachenal ! Au sein de notre club de débat lycéen, nous explorons un vaste éventail
+            de sujets, des questions sociétales aux enjeux mondiaux. Rassemblés dans une atmosphère de respect et d'ouverture d'esprit, nous échangeons des idées,
+            affinons nos argumentaires et développons nos compétences en prise de parole.
+        </p>
+        <a class="know_more" href="#present" aria-label="En savoir plus ->">
+            <span aria-hidden="true">
+                <span>En<span>En</span></span>
+                <span>savoir<span>savoir</span></span>
+                <span>plus<span>plus</span></span>
+                <span>⠀⠀<span>➡️</span> </span>
+            </span>
+        </a>
+    </div>
 </section>
 
 <style lang="scss">
-  @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Oswald&display=swap");
-  section {
-    // @apply flex flex-col items-center justify-center;
-    .left {
-      @apply flex flex-col  justify-center;
-      width: 50%;
-      //   background: rgba(255, 255, 255, 0.4);
-      padding: 40px;
-      h1 {
-        font-family: "Inter Tight", "Inter Tight Placeholder", sans-serif;
-        font-weight: 600;
-        font-size: 125px;
-        letter-spacing: -0.04em;
-        //   color: black;
-        // text-transform: uppercase;
-        //   position: absolute;
-        strong {
-          font-weight: inherit;
-          background: -webkit-linear-gradient(
-            10deg,
-            var(--primary),
-            var(--secondary)
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-      p {
-        width: 75%;
-        font-size: 18px;
-        margin: 20px 0;
-      }
-      a.know_more {
-        // position: absolute;
-        margin-top: 25px;
-        margin-left: 50px;
-        width: fit-content;
-        // height: 100px;
-        font-size: 24px;
-        padding: 15px;
-        color: black;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(to right, var(--primary), var(--secondary)) border-box;
-        border-radius: 50em;
-        border: 4px solid transparent;
-        position: relative;
-        overflow: hidden;
-        transition: 0.2s;
-        transition-delay: 0.25s;
-        z-index: 2;
-        span {
-          //   overflow: hidden;
-          display: block;
-          position: relative;
-          pointer-events: none;
-          span {
-            display: inline-block;
-            transition: 0.4s ease all;
-            // &:nth-of-type(1) {
-            // }
-            &:nth-of-type(2) {
-              transition-delay: 0.07s;
-            }
-            &:nth-of-type(3) {
-              transition-delay: 0.14s;
-            }
-            &:nth-of-type(4) {
-              transition-delay: 0.21s;
-            }
-            span {
-              content: attr(data-text);
-              display: block;
-              position: absolute;
-              top: 0;
-              left: 0;
-              transform: translateY(200%);
-            }
-          }
-        }
-        &:hover > span > span {
-          transform: translateY(-200%);
-        }
-        // &:hover span {
-        //   transform: translateY(0%);
-        // }
-        // &::before,
-        // &::after {
-        //   content: "";
-        //   transition: 0.5s;
-        //   position: absolute;
-        //   z-index: -1;
-        //   top: 0;
-        //   width: 0%;
-        //   height: 100%;
-        //   border-radius: inherit;
-        //   background: linear-gradient(
-        //     to right,
-        //     var(--primary),
-        //     var(--secondary)
-        //   );
-        //   background-size: 200%;
-        //   left: 0%;
-        //   //   transform: translate(-100%, 0%);
-        // }
-        // &::after {
-        //   left: 100%;
-        //   border-top-left-radius: 0;
-        //   border-bottom-left-radius: 0;
-        //   background-position-x: 100%;
-        // }
-        // &::before {
-        //   border-top-right-radius: 0;
-        //   border-bottom-right-radius: 0;
-        // }
-        // &:hover::after {
-        //   left: 50%;
-        // }
-        // &:hover::before,
-        // &:hover::after {
-        //   width: 50%;
-        //   //   transform: translate(-0%, 0%);
-        // }
-        // &:hover {
-        //   color: white;
-        // }
-      }
-    }
-    position: relative;
-    height: 90vh;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    .bg_image {
-      background: url("debating.jpg") no-repeat;
-      position: absolute;
-      width: 70%;
-      left: 30%;
-      height: 100%;
-      z-index: -1;
-      filter: blur(2px);
-      -webkit-filter: blur(2px);
+    @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Oswald&display=swap");
 
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      overflow: hidden;
-      .sep {
-        left: 0;
-        width: 100%;
-        height: 200%;
-        position: absolute;
-        background: white;
-        transform: rotate(15deg) translateY(-10%) translateX(-70%);
-      }
-    }
-  }
-  @media screen and (max-width: 768px) {
     section {
-      height: 120vh;
-      background: rgba(255, 255, 255, 0.75);
-      .left {
+        // @apply flex flex-col items-center justify-center;
+        .left {
+            @apply flex flex-col  justify-center;
+            width: 50%;
+            //   background: rgba(255, 255, 255, 0.4);
+            padding: 40px;
+
+            h1 {
+                font-family: "Inter Tight", "Inter Tight Placeholder", sans-serif;
+                font-weight: 600;
+                font-size: 125px;
+                letter-spacing: -0.04em;
+                //   color: black;
+                // text-transform: uppercase;
+                //   position: absolute;
+                strong {
+                    font-weight: inherit;
+                    background: -webkit-linear-gradient(
+                                    10deg,
+                                    var(--primary),
+                                    var(--secondary)
+                    );
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+
+            p {
+                width: 75%;
+                font-size: 18px;
+                margin: 20px 0;
+            }
+
+            a.know_more {
+                // position: absolute;
+                margin-top: 25px;
+                margin-left: 50px;
+                width: fit-content;
+                // height: 100px;
+                font-size: 24px;
+                padding: 15px;
+                color: black;
+                background: linear-gradient(white, white) padding-box,
+                linear-gradient(to right, var(--primary), var(--secondary)) border-box;
+                border-radius: 50em;
+                border: 4px solid transparent;
+                position: relative;
+                overflow: hidden;
+                transition: 0.2s;
+                transition-delay: 0.25s;
+                z-index: 2;
+
+                span {
+                    //   overflow: hidden;
+                    display: block;
+                    position: relative;
+                    pointer-events: none;
+
+                    span {
+                        display: inline-block;
+                        transition: 0.4s ease all;
+                        // &:nth-of-type(1) {
+                        // }
+                        &:nth-of-type(2) {
+                            transition-delay: 0.07s;
+                        }
+
+                        &:nth-of-type(3) {
+                            transition-delay: 0.14s;
+                        }
+
+                        &:nth-of-type(4) {
+                            transition-delay: 0.21s;
+                        }
+
+                        span {
+                            content: attr(data-text);
+                            display: block;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            transform: translateY(200%);
+                        }
+                    }
+                }
+
+                &:hover > span > span {
+                    transform: translateY(-200%);
+                }
+
+                // &:hover span {
+                //   transform: translateY(0%);
+                // }
+                // &::before,
+                // &::after {
+                //   content: "";
+                //   transition: 0.5s;
+                //   position: absolute;
+                //   z-index: -1;
+                //   top: 0;
+                //   width: 0%;
+                //   height: 100%;
+                //   border-radius: inherit;
+                //   background: linear-gradient(
+                //     to right,
+                //     var(--primary),
+                //     var(--secondary)
+                //   );
+                //   background-size: 200%;
+                //   left: 0%;
+                //   //   transform: translate(-100%, 0%);
+                // }
+                // &::after {
+                //   left: 100%;
+                //   border-top-left-radius: 0;
+                //   border-bottom-left-radius: 0;
+                //   background-position-x: 100%;
+                // }
+                // &::before {
+                //   border-top-right-radius: 0;
+                //   border-bottom-right-radius: 0;
+                // }
+                // &:hover::after {
+                //   left: 50%;
+                // }
+                // &:hover::before,
+                // &:hover::after {
+                //   width: 50%;
+                //   //   transform: translate(-0%, 0%);
+                // }
+                // &:hover {
+                //   color: white;
+                // }
+            }
+        }
+
+        position: relative;
+        height: 90vh;
         width: 100%;
-        h1 {
-          font-size: 100px;
+        background: rgba(255, 255, 255, 0.5);
+
+        .bg_image {
+            background: url("debating.jpg") no-repeat center;
+            position: absolute;
+            width: 70%;
+            left: 30%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(2px);
+            -webkit-filter: blur(2px);
+
+            background-size: cover;
+            overflow: hidden;
+
+            .sep {
+                left: 0;
+                width: 100%;
+                height: 200%;
+                position: absolute;
+                background: white;
+                transform: rotate(15deg) translateY(-10%) translateX(-70%);
+            }
         }
-        p {
-          font-size: 24px;
-          width: 100%;
-        }
-      }
-      .bg_image {
-        width: 100%;
-        left: 0;
-        .sep {
-          display: none;
-        }
-      }
     }
-  }
-  // Else the know more button is next to the first header, which looks broken !
-  @media screen and (max-width: 1400px) {
-    section {
-      // img {
-      //   transform: scale(1.5) !important;
-      // }
-      margin-bottom: 10vh;
+
+    @media screen and (max-width: 768px) {
+        section {
+            height: 120vh;
+            background: rgba(255, 255, 255, 0.75);
+
+            .left {
+                width: 100%;
+
+                h1 {
+                    font-size: 100px;
+                }
+
+                p {
+                    font-size: 24px;
+                    width: 100%;
+                }
+            }
+
+            .bg_image {
+                width: 100%;
+                left: 0;
+
+                .sep {
+                    display: none;
+                }
+            }
+        }
     }
-  }
+
+    // Else the know more button is next to the first header, which looks broken !
+    @media screen and (max-width: 1400px) {
+        section {
+            // img {
+            //   transform: scale(1.5) !important;
+            // }
+            margin-bottom: 10vh;
+        }
+    }
 </style>
