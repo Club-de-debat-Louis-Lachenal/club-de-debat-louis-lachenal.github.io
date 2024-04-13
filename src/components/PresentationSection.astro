@@ -2,14 +2,15 @@
 interface Props {
   id: string;
   title: string;
-  desc: string;
 }
-let { id, title, desc } = Astro.props;
+let { id, title } = Astro.props;
 ---
 
 <section id={id}>
   <h1 class=`t_${id}`>{title}</h1>
-  <p set:html={desc}></p>
+  <p>
+      <slot/>
+  </p>
 </section>
 <script>
   import { gsap } from "gsap";
