@@ -2,26 +2,22 @@
 interface Props {
     id: string;
     title: string;
-    desc: string;
 }
-let {id, title, desc} = Astro.props;
+let {id, title} = Astro.props;
 ---
 
 <section id={id}>
     <h1 class=`t_${id}`>{title}</h1>
-    <p set:html={desc}></p>
+    <p>
+        <slot/>
+    </p>
 </section>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
-></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
-></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
-></script>
-<script defer>
+<script>
+    import { gsap } from "gsap";
     document.addEventListener("DOMContentLoaded", (event) => {
-        gsap.registerPlugin(ScrollTrigger);
         for (let section of document.querySelectorAll("section")) {
             let id = section.id;
+            if (id === "hero") continue;
             let tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: `h1.t_${id}`,
