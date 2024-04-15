@@ -11,10 +11,36 @@ footer {
     width: 100%;
     height: 50vh;
     background-color: #000000;
+
+    .legals {
+        height: 100%;
+        @apply flex flex-col items-center justify-around;
+        padding: 20px;
+        a {
+            color: white;
+            font-size: 24px;
+            font-weight: lighter;
+            position: relative;
+            padding: 10px;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 0%;
+                height: 1px;
+                background: white;
+                bottom:0;
+                left:0;
+                transition: .5s ease-in-out;
+            }
+            &:hover::before {
+                width: 100%;
+            }
+        }
+    }
 }
 </style>
 
-<style is:global lang="scss">
+<style is:global lang="scss"> // Global cuz generated from js down
 .close {
     position: fixed;
     width: 100vw;
@@ -34,7 +60,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80vw;
-    min-height: 50vw;
+    min-height: 50vh;
     padding: 20px;
     @apply flex flex-col items-center;
     z-index: 10;
