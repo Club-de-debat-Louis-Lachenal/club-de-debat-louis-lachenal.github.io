@@ -17,9 +17,9 @@ import PresentationSection from "../components/PresentationSection.astro";
             id="register"
             title="Pour vous inscrire">
         Rejoignez notre club de débat lycéen et transformez vos idées en arguments percutants, vos doutes en convictions, et vos discussions en véritables
-        aventures intellectuelles ! 🎉 Inscrivez-vous <a href='https://forms.gle/hxi5E1E8KZSfSYYf7'>ici</a>, ou contactez nous sur
-        instagram : <a href='https://www.instagram.com/club_debat_lll'>club_debat_lll</a>
-    </PresentationSection>
+        aventures intellectuelles ! 🎉 <a onclick="openFormPopup('https://docs.google.com/forms/d/e/1FAIpQLSfwyLdrwtY4iENq6cHDpvNB7KzVf4STO5v7ZZVU3UEOSmU6mw/viewform?embedded=true')" class="cursor-pointer">Inscrivez-vous ici</a>, ou contactez nous sur
+        instagram : <a href='https://www.instagram.com/club_debat_lll' class="cursor-pointer!">club_debat_lll</a>
+    </PresentationSection>//TODO: boite a idées
     <PresentationSection id="nums" title="Les chiffres">Nb inscrits: 8</PresentationSection>
     <PresentationSection
             id="tips"
@@ -55,4 +55,20 @@ import PresentationSection from "../components/PresentationSection.astro";
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
     gsap.registerPlugin(ScrollTrigger);
+</script>
+
+<div id='googleFormPopup' class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999] bg-white p-[20px] rounded-2xl border border-[#ccc]" style='box-shadow: 0 2px 5px rgba(0,0,0,0.2)'>
+    <iframe id="from" src="" width="840" height="613">Chargement…</iframe>
+    <button class='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4' onclick='closeFormPopup()'>Fermer</button>
+</div>
+
+<script defer>
+    function openFormPopup(form) {
+        document.getElementById("from").src = form;
+        document.getElementById("googleFormPopup").style.display = "block";
+    }
+
+    function closeFormPopup() {
+        document.getElementById("googleFormPopup").style.display = "none"
+    }
 </script>
