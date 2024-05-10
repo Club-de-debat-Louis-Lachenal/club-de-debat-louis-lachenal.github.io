@@ -10,7 +10,7 @@
     <div class="grid-cols-1 grid-rows-1 legals">
         <a onclick="show_mentions()">Mentions légales</a>
         <a onclick="show_politics()">Politique de confidentialité</a>
-        <a>TODO</a>
+        <a onclick="show_chart()">Organigramme</a>
     </div>
     <div class="grid-cols-1 grid-rows-1">
         <a href="https://ac-grenoble.fr">
@@ -146,5 +146,9 @@
 
     function show_politics() {
         show_popup("Politiques de confidentialités", "Nous ne collectons aucune données")
+    }
+
+    function show_chart() {
+        show_popup("Organigramme", "TODO")
     }
 </script>
