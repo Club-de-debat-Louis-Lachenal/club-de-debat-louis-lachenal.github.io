@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import PresentationSection from "../components/PresentationSection.astro";
+import TimeCounter from "../components/TimeCounter.astro";
 ---
 
 <Layout title="Bienvenue sur le site du Club débat !">
@@ -20,7 +21,9 @@ import PresentationSection from "../components/PresentationSection.astro";
         aventures intellectuelles ! 🎉 <a onclick="openFormPopup('https://docs.google.com/forms/d/e/1FAIpQLSfwyLdrwtY4iENq6cHDpvNB7KzVf4STO5v7ZZVU3UEOSmU6mw/viewform?embedded=true')" class="cursor-pointer">Inscrivez-vous ici</a>, ou contactez nous sur
         instagram : <a href='https://www.instagram.com/club_debat_lll' class="cursor-pointer!">club_debat_lll</a>
     </PresentationSection>//TODO: boite a idées
-    <PresentationSection id="nums" title="Les chiffres">Nb inscrits: 8</PresentationSection>
+    <PresentationSection id="nums" title="Les chiffres">
+        <TimeCounter/>
+    </PresentationSection>
     <PresentationSection
             id="tips"
             title="Quelques tips">
