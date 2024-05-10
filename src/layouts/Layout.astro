@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 interface Props {
     title: string;
 }
@@ -20,13 +21,14 @@ const {title} = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="generator" content={Astro.generator}/>
     <title>{title}</title>
-</head>
-<body>
-<Navbar/>
-<main>
-    <slot/>
-</main>
-</body>
+  </head>
+  <body>
+  <Navbar/>
+  <main>
+      <slot/>
+  </main>
+  <Footer/>
+  </body>
 </html>
 <style is:global lang="scss">
     :root {

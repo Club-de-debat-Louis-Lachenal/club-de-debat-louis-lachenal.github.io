@@ -1,0 +1,154 @@
+<footer>
+    <div class="grid-cols-1 grid-rows-1">
+        <a href="https://www.lycee-louis-lachenal.fr">
+            <img src="lachenal.png" alt="Lycée Lachenal"/>
+        </a>
+        <a href="https://auvergnerhonealpes.fr">
+            <img src="region.png" alt="Région Auvergne-Rhône-Alpes"/>
+        </a>
+    </div>
+    <div class="grid-cols-1 grid-rows-1 legals">
+        <a onclick="show_mentions()">Mentions légales</a>
+        <a onclick="show_politics()">Politique de confidentialité</a>
+        <a onclick="show_chart()">Organigramme</a>
+    </div>
+    <div class="grid-cols-1 grid-rows-1">
+        <a href="https://ac-grenoble.fr">
+            <img src="academie-grenoble.png" alt="Académie de Grenoble"/>
+        </a>
+        <a href="https://www.education.gouv.fr">
+            <img src="republique.png" alt="République Française"/>
+        </a>
+    </div>
+</footer>
+
+<style lang="scss">
+    footer {
+        width: 100%;
+        height: 35vh;
+        background-color: #000000;
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        color: white;
+        text-align: center;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            * {
+                margin: 0.5rem;
+            }
+        }
+
+        .legals {
+            height: 100%;
+            padding: 20px;
+
+            a {
+                color: white;
+                font-size: 24px;
+                font-weight: lighter;
+                position: relative;
+                padding: 10px;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 1px;
+                    background: white;
+                    bottom: 0;
+                    left: 0;
+                    transition: .5s ease-in-out;
+                }
+
+                &:hover::before {
+                    width: 100%;
+                }
+            }
+        }
+    }
+</style>
+
+<style is:global lang="scss"> // Global cuz generated from js down
+.close {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: -1;
+}
+
+.popup {
+    position: fixed;
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #D36500;
+    box-shadow: 1px 2px 3px black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    min-height: 50vh;
+    padding: 20px;
+    @apply flex flex-col items-center;
+    z-index: 10;
+
+    h2 {
+        font-size: 34px;
+        color: #054976;
+        font-family: alice;
+        text-decoration: underline;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 24px;
+    }
+}
+</style>
+
+<script defer>
+    function show_popup(text_title, text_desc) {
+        let popup = document.createElement("div");
+        let close = document.createElement("div");
+        close.classList.add("close");
+        let title = document.createElement("h2");
+        title.innerHTML = text_title; // using innerHTML so that user of function can change some html, so be sure that this function can't be called from an XSS, or we change to innerText
+        let desc = document.createElement("p");
+        desc.innerHTML = text_desc; // using innerHTML so that user of function can change some html, so be sure that this function can't be called from an XSS, or we change to innerText
+
+        document.body.appendChild(close);
+        popup.appendChild(title);
+        popup.appendChild(desc);
+
+        popup.classList.add("popup")
+        document.body.appendChild(popup);
+        setTimeout(() => {
+            document.addEventListener("click", () => {
+                document.body.removeChild(popup)
+                document.body.removeChild(close)
+            }, {once: true})
+        }, 50)
+    }
+
+    function show_mentions() {
+        show_popup("Mentions légales", "Tout les droits au débat")
+    }
+
+    function show_politics() {
+        show_popup("Politiques de confidentialités", "Nous ne collectons aucune données")
+    }
+
+    function show_chart() {
+        show_popup("Organigramme", "TODO")
+    }
+</script>
